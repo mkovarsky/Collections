@@ -17,7 +17,7 @@ public class IssueRepositorySingleTest {
 
     IssueRepository repository = new IssueRepository();
 
-    Issue first = new Issue(2239, "assertTimeoutPreemptively should provide reference to future or executor service parameter", true, "doctorpangloss", asList("component: Jupiter", "status: team discussion", "theme: programming model", "type: enhancement"), emptyList(), "5.7 M2", emptyList(), "07.04.2020", 1, 0);
+    Issue first = new Issue(2239, "assertTimeoutPreemptively should provide reference to future or executor service parameter", true, "doctorpangloss", asList("component: Jupiter", "status: team discussion", "theme: programming model", "type: enhancement"), emptyList(), "5.7 M2", emptyList(), "2020-04-07", 1, 0);
 
     @BeforeEach()
     void setup() {

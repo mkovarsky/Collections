@@ -1,15 +1,18 @@
 package ru.netology.manager;
 
-import ru.netology.comparator.IssueAscComparator;
-import ru.netology.domain.Issue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ru.netology.comparator.IssueAscComparator;
+import ru.netology.domain.Issue;
 import ru.netology.repository.IssueRepository;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-import static java.util.Arrays.*;
-import static java.util.Collections.*;
+import static java.util.Arrays.asList;
+import static java.util.Collections.emptyList;
+import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class IssueManagerTest {
@@ -18,12 +21,12 @@ class IssueManagerTest {
     IssueAscComparator comparator = new IssueAscComparator();
 
 
-    Issue first = new Issue(2239, "assertTimeoutPreemptively should provide reference to future or executor service parameter", true, "doctorpangloss", asList("component: Jupiter", "status: team discussion", "theme: programming model", "type: enhancement"), emptyList(), "5.7 M2", emptyList(), "07.04.2020", 1, 0);
-    Issue second = new Issue(2240, "Add icon for JetBrains Toolbox", false, "marcphilipp", asList("status: team discussion", "type: enhancement"), emptyList(), "5.7 M1", emptyList(), "10.04.2020", 29, 1);
-    Issue third = new Issue(2241, "GitHub issue links in IDEA Git log", false, "marcphilipp", asList("status: team discussion", "type: enhancement"), emptyList(), "5.7 M1", asList("stranger1", "stranger2", "stranger3"), "13.04.2020", 0, 0);
-    Issue fourth = new Issue(2242, "Reuse Launcher orchestration in EngineTestKit", false, "marcphilipp", emptyList(), emptyList(), "5.7 M1 ", singletonList("marcphilipp"), "14.04.2020", 2, 1);
-    Issue fifth = new Issue(2243, "Improve module descriptions", true, "sormuras", asList("component: Jupiter", "component: OTA", "component: Platform", "component: Test Kit", "component: Vintage", "theme: documentation"), emptyList(), "5.7 Backlog", asList("stranger1", "stranger2"), "15.04.2020", 4, 1);
-    Issue sixth = new Issue(2244, "IsTestableMethod silently ignores @Test annotated methods that return a value", false, "george-hawkins", asList("component: Jupiter", "status: duplicate", "status: team discussion", "theme: diagnostics", "theme: execution", "theme: reporting"), emptyList(), null, emptyList(), "16.04.2020", 3, 0);
+    Issue first = new Issue(2239, "assertTimeoutPreemptively should provide reference to future or executor service parameter", true, "doctorpangloss", asList("component: Jupiter", "status: team discussion", "theme: programming model", "type: enhancement"), emptyList(), "5.7 M2", emptyList(), "2020-04-07", 1, 0);
+    Issue second = new Issue(2240, "Add icon for JetBrains Toolbox", false, "marcphilipp", asList("status: team discussion", "type: enhancement"), emptyList(), "5.7 M1", emptyList(), "2020-04-10", 29, 1);
+    Issue third = new Issue(2241, "GitHub issue links in IDEA Git log", false, "marcphilipp", asList("status: team discussion", "type: enhancement"), emptyList(), "5.7 M1", asList("stranger1", "stranger2", "stranger3"), "2020-04-13", 0, 0);
+    Issue fourth = new Issue(2242, "Reuse Launcher orchestration in EngineTestKit", false, "marcphilipp", emptyList(), emptyList(), "5.7 M1 ", singletonList("marcphilipp"), "2020-04-14", 2, 1);
+    Issue fifth = new Issue(2243, "Improve module descriptions", true, "sormuras", asList("component: Jupiter", "component: OTA", "component: Platform", "component: Test Kit", "component: Vintage", "theme: documentation"), emptyList(), "5.7 Backlog", asList("stranger1", "stranger2"), "2020-04-15", 4, 1);
+    Issue sixth = new Issue(2244, "IsTestableMethod silently ignores @Test annotated methods that return a value", false, "george-hawkins", asList("component: Jupiter", "status: duplicate", "status: team discussion", "theme: diagnostics", "theme: execution", "theme: reporting"), emptyList(), null, emptyList(), "2020-04-16", 3, 0);
 
     @BeforeEach()
     void setup() {

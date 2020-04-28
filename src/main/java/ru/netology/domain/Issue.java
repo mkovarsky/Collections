@@ -3,6 +3,7 @@ package ru.netology.domain;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -19,7 +20,7 @@ public class Issue {
     private Set<String> projects = new HashSet<>();
     private String milestone;
     private Set<String> assignees = new HashSet<>();
-    private String date;
+    private LocalDate date;
     private int commentsCount;
     private int linkedPullRequestCount;
 
@@ -32,7 +33,7 @@ public class Issue {
         this.projects.addAll(projects);
         this.milestone = milestone;
         this.assignees.addAll(assignees);
-        this.date = date;
+        this.date = LocalDate.parse(date);
         this.commentsCount = commentsCount;
         this.linkedPullRequestCount = linkedPullRequestCount;
     }
