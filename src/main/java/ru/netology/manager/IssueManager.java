@@ -1,7 +1,7 @@
 package ru.netology.manager;
 
-import ru.netology.domain.Issue;
 import lombok.AllArgsConstructor;
+import ru.netology.domain.Issue;
 import ru.netology.repository.IssueRepository;
 
 import java.util.ArrayList;
@@ -34,6 +34,18 @@ public class IssueManager {
         }
         tmp.sort(comparator);
         return tmp;
+    }
+
+    public List<Issue> filterByAuthor(Predicate<Issue> author, Comparator<Issue> comparator) {
+        return new ArrayList<>(filterBy(author, comparator));
+    }
+
+    public List<Issue> filterByLabel(Predicate<Issue> Labels, Comparator<Issue> comparator) {
+        return new ArrayList<>(filterBy(Labels, comparator));
+    }
+
+    public List<Issue> filterByAssignee(Predicate<Issue> Assignees, Comparator<Issue> comparator) {
+        return new ArrayList<>(filterBy(Assignees, comparator));
     }
 
     public void openById(int id) {

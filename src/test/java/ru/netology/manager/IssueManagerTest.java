@@ -53,7 +53,7 @@ class IssueManagerTest {
 
     @Test
     void shouldFilterByAuthor() {
-        List<Issue> actual = manager.filterBy(issue -> issue.getAuthor().equals("marcphilipp"), comparator);
+        List<Issue> actual = manager.filterByAuthor(issue -> issue.getAuthor().equals("marcphilipp"), comparator);
         List<Issue> expected = asList(second, third, fourth);
 
         assertEquals(expected, actual);
@@ -61,7 +61,7 @@ class IssueManagerTest {
 
     @Test
     void shouldFilterBySingleLabel() {
-        List<Issue> actual = manager.filterBy(issue -> issue.getLabels().contains("theme: diagnostics"), comparator);
+        List<Issue> actual = manager.filterByLabel(issue -> issue.getLabels().contains("theme: diagnostics"), comparator);
         List<Issue> expected = singletonList(sixth);
 
         assertEquals(expected, actual);
@@ -73,7 +73,7 @@ class IssueManagerTest {
         labels.add("component: Jupiter");
         labels.add("status: team discussion");
 
-        List<Issue> actual = manager.filterBy(issue -> issue.getLabels().containsAll(labels), comparator);
+        List<Issue> actual = manager.filterByLabel(issue -> issue.getLabels().containsAll(labels), comparator);
         List<Issue> expected = asList(first, sixth);
 
         assertEquals(expected, actual);
@@ -81,7 +81,7 @@ class IssueManagerTest {
 
     @Test
     void shouldFilterBySingleAssignee() {
-        List<Issue> actual = manager.filterBy(issue -> issue.getAssignees().contains("marcphilipp"), comparator);
+        List<Issue> actual = manager.filterByAssignee(issue -> issue.getAssignees().contains("marcphilipp"), comparator);
         List<Issue> expected = singletonList(fourth);
 
         assertEquals(expected, actual);
@@ -93,7 +93,7 @@ class IssueManagerTest {
         assignees.add("stranger1");
         assignees.add("stranger2");
 
-        List<Issue> actual = manager.filterBy(issue -> issue.getAssignees().containsAll(assignees), comparator);
+        List<Issue> actual = manager.filterByAssignee(issue -> issue.getAssignees().containsAll(assignees), comparator);
         List<Issue> expected = asList(third, fifth);
 
         assertEquals(expected, actual);
