@@ -1,6 +1,6 @@
 package ru.netology.manager;
 
-import ru.netology.comparator.IssueComparator;
+import ru.netology.comparator.IssueAscComparator;
 import ru.netology.domain.Issue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class IssueManagerTest {
     IssueRepository repository = new IssueRepository();
     IssueManager manager = new IssueManager(repository);
-    IssueComparator comparator = new IssueComparator();
+    IssueAscComparator comparator = new IssueAscComparator();
 
 
     Issue first = new Issue(2239, "assertTimeoutPreemptively should provide reference to future or executor service parameter", true, "doctorpangloss", asList("component: Jupiter", "status: team discussion", "theme: programming model", "type: enhancement"), emptyList(), "5.7 M2", emptyList(), "07.04.2020", 1, 0);
@@ -45,7 +45,7 @@ class IssueManagerTest {
 
     @Test
     void shouldShowAllClosedIssues() {
-        List<Issue> actual = manager.showClosedIssues(false);
+        List<Issue> actual = manager.showClosedIssues();
         List<Issue> expected = asList(second, third, fourth, sixth);
 
         assertEquals(expected, actual);
@@ -114,7 +114,7 @@ class IssueManagerTest {
     void shouldCloseById() {
         manager.closeById(2239);
 
-        List<Issue> actual = manager.showClosedIssues(false);
+        List<Issue> actual = manager.showClosedIssues();
         List<Issue> expected = asList(first, second, third, fourth, sixth);
 
         assertEquals(expected, actual);

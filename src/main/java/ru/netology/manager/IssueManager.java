@@ -21,7 +21,7 @@ public class IssueManager {
         return new ArrayList<>(repository.getByStatus(true));
     }
 
-    public List<Issue> showClosedIssues(boolean open) {
+    public List<Issue> showClosedIssues() {
         return new ArrayList<>(repository.getByStatus(false));
     }
 
@@ -32,6 +32,7 @@ public class IssueManager {
                 tmp.add(issue);
             }
         }
+        tmp.sort(comparator);
         return tmp;
     }
 
